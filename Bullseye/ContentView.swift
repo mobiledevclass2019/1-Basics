@@ -16,32 +16,29 @@ struct ContentView: View {
     @State var score = 0
     @State var round = 1
     
+    struct LabelStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
+        }
+    }
+    
     var body: some View {
         VStack {
             Spacer()
             // Target row
             HStack {
-                Text("Drag the slider as close as you can to:")
-                    .foregroundColor(Color.white)
-                    .shadow(color: .black, radius: 5, x: 2, y: 2)
-                    .font(.custom("Arial Rounded MT Bold", size: 18))
-                Text("\(target)")
-                .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
-                .font(.custom("Arial Rounded MT Bold", size: 18))
+                Text("Drag the slider as close as you can to:").modifier(LabelStyle())
+                Text("\(target)").modifier(LabelStyle())
             }
             Spacer()
             // Slider row
             HStack {
-                Text("1")
-                .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
-                .font(.custom("Arial Rounded MT Bold", size: 18))
+                Text("1").modifier(LabelStyle())
                 Slider(value: $sliderValue, in: 1...100)
-                Text("100")
-                .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
-                .font(.custom("Arial Rounded MT Bold", size: 18))
+                Text("100").modifier(LabelStyle())
             }
             Spacer()
             // Button row
@@ -72,23 +69,11 @@ struct ContentView: View {
                     Text("Start Over")
                 }
                 Spacer()
-                Text("Score:")
-                .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
-                .font(.custom("Arial Rounded MT Bold", size: 18))
-                Text("\(score)")
-                .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
-                .font(.custom("Arial Rounded MT Bold", size: 18))
+                Text("Score:").modifier(LabelStyle())
+                Text("\(score)").modifier(LabelStyle())
                 Spacer()
-                Text("Round:")
-                .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
-                .font(.custom("Arial Rounded MT Bold", size: 18))
-                Text("\(round)")
-                .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
-                .font(.custom("Arial Rounded MT Bold", size: 18))
+                Text("Round:").modifier(LabelStyle())
+                Text("\(round)").modifier(LabelStyle())
                 Spacer()
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
                     Text("Info")
