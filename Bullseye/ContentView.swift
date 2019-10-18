@@ -22,14 +22,26 @@ struct ContentView: View {
             // Target row
             HStack {
                 Text("Drag the slider as close as you can to:")
+                    .foregroundColor(Color.white)
+                    .shadow(color: .black, radius: 5, x: 2, y: 2)
+                    .font(.custom("Arial Rounded MT Bold", size: 18))
                 Text("\(target)")
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
             }
             Spacer()
             // Slider row
             HStack {
                 Text("1")
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
                 Slider(value: $sliderValue, in: 1...100)
                 Text("100")
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
             }
             Spacer()
             // Button row
@@ -61,10 +73,22 @@ struct ContentView: View {
                 }
                 Spacer()
                 Text("Score:")
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
                 Text("\(score)")
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
                 Spacer()
                 Text("Round:")
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
                 Text("\(round)")
+                .foregroundColor(Color.white)
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
                 Spacer()
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
                     Text("Info")
