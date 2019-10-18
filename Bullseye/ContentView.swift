@@ -15,10 +15,22 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            // Target row
+            HStack {
+                Text("Drag the slider as close as you can to:")
+                Text("100")
+            }
+            
+            // Slider row
+            HStack {
+                Text("1")
+                Slider(value: .constant(100))
+                Text("100")
+            }
+
+            // Button row
             VStack {
-                Text("Welcome to my first app!")
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.green)
+
                 Button(action: {
                     self.alertIsVisable = true
                 }) {
@@ -40,6 +52,8 @@ struct ContentView: View {
                                  dismissButton: .default(Text("Little old lady who?")))
                 }
             }
+            
+            // Score row
         }
     }
 }
