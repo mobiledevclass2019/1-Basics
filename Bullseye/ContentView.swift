@@ -34,6 +34,22 @@ struct ContentView: View {
         }
     }
     
+    struct ButtonLargeTextStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .foregroundColor(Color.black)
+                .font(.custom("Arial Rounded MT Bold", size: 18))
+        }
+    }
+    
+    struct ButtonSmallTextStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .foregroundColor(Color.black)
+                .font(.custom("Arial Rounded MT Bold", size: 12))
+        }
+    }
+    
     struct Shadow: ViewModifier {
         func body(content: Content) -> some View {
             content
@@ -59,13 +75,14 @@ struct ContentView: View {
             Spacer()
             // Button row
             VStack {
-                
                 Button(action: {
                     self.alertIsVisable = true
                     self.score = self.score + self.pointsForCurrentRound()
                 }) {
                     Text(/*@START_MENU_TOKEN@*/"Hit Me!"/*@END_MENU_TOKEN@*/)
                 }
+                .background(Image("Button"))
+                .modifier(ButtonLargeTextStyle())
                 .alert(isPresented: $alertIsVisable) { () -> Alert in
                     return Alert(title: Text(alertTitle()),
                                  message: Text("The slider value is \(sliderValueRounded())\n" +
@@ -84,6 +101,8 @@ struct ContentView: View {
                 }) {
                     Text("Start Over")
                 }
+                .background(Image("Button"))
+                .modifier(ButtonLargeTextStyle())
                 Spacer()
                 Text("Score:").modifier(LabelStyle())
                 Text("\(score)").modifier(ValueStyle())
@@ -94,6 +113,8 @@ struct ContentView: View {
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
                     Text("Info")
                 }
+                .background(Image("Button"))
+                .modifier(ButtonLargeTextStyle())
             }
             .padding(.bottom, 20)
         }
