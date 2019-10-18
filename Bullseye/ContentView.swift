@@ -37,6 +37,7 @@ struct ContentView: View {
                 Button(action: {
                     self.alertIsVisable = true
                     self.score = self.score + self.pointsForCurrentRound()
+                    self.target = Int.random(in: 1...100)
                 }) {
                     Text(/*@START_MENU_TOKEN@*/"Hit Me!"/*@END_MENU_TOKEN@*/)
                 }
