@@ -81,8 +81,18 @@ struct ContentView: View {
     }
     
     func pointsForCurrentRound() -> Int {
-        let score = 100 - amountOff()
-        return score
+        let maximumScore = 100
+        let diffenence = amountOff()
+        let score = maximumScore - diffenence
+        let bonus: Int
+        if diffenence == 0 {
+            bonus = 100
+        } else if diffenence < 50 {
+            bonus = 50
+        } else {
+            bonus = 0
+        }
+        return score + bonus
     }
     
     func alertTitle() -> String {
