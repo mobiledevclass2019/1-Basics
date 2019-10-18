@@ -39,7 +39,7 @@ struct ContentView: View {
                 }
                 .alert(isPresented: $alertIsVisable) { () -> Alert in
                     return Alert(title: Text("Hello there!"),
-                                 message: Text("This is my first pop-up!"),
+                                 message: Text("The slider value is \(self.sliderValue)"),
                                  dismissButton: .default(Text("Awesome!")))
                 }
             }
