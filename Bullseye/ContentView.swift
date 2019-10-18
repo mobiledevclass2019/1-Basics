@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var target = Int.random(in: 1...100)
     @State var score = 0
     @State var round = 1
+    let midnightBlue = Color(red: 0.0 / 255.0, green: 51.0 / 255.0, blue: 102.0 / 255.0)
     
     struct LabelStyle: ViewModifier {
         func body(content: Content) -> some View {
@@ -69,7 +70,7 @@ struct ContentView: View {
             // Slider row
             HStack {
                 Text("1").modifier(LabelStyle())
-                Slider(value: $sliderValue, in: 1...100)
+                Slider(value: $sliderValue, in: 1...100).accentColor(.green)
                 Text("100").modifier(LabelStyle())
             }
             Spacer()
@@ -99,10 +100,13 @@ struct ContentView: View {
                 Button(action: {
                     self.reset()
                 }) {
-                    Text("Start Over")
+                    HStack {
+                        Image("StartOverIcon")
+                        Text("Start Over")
+                    }
                 }
                 .background(Image("Button"))
-                .modifier(ButtonLargeTextStyle())
+                .modifier(ButtonSmallTextStyle())
                 Spacer()
                 Text("Score:").modifier(LabelStyle())
                 Text("\(score)").modifier(ValueStyle())
@@ -111,14 +115,18 @@ struct ContentView: View {
                 Text("\(round)").modifier(ValueStyle())
                 Spacer()
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                    Text("Info")
+                    HStack {
+                        Image("InfoIcon")
+                        Text("Info")
+                    }
                 }
                 .background(Image("Button"))
-                .modifier(ButtonLargeTextStyle())
+                .modifier(ButtonSmallTextStyle())
             }
             .padding(.bottom, 20)
         }
         .background(Image("Background"), alignment: .center)
+        .accentColor(midnightBlue)
     }
     
     func sliderValueRounded() -> Int {
