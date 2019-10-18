@@ -42,7 +42,7 @@ struct ContentView: View {
                     Text(/*@START_MENU_TOKEN@*/"Hit Me!"/*@END_MENU_TOKEN@*/)
                 }
                 .alert(isPresented: $alertIsVisable) { () -> Alert in
-                    return Alert(title: Text("Hello there!"),
+                    return Alert(title: Text(alertTitle()),
                                  message: Text("The slider value is \(sliderValueRounded())\n" +
                                     "You scored \(pointsForCurrentRound()) points this round."),
                                  dismissButton: .default(Text("Awesome!")) {
@@ -76,10 +76,28 @@ struct ContentView: View {
         Int(self.sliderValue.rounded())
     }
     
+    func amountOff() -> Int {
+        abs(self.target - sliderValueRounded())
+    }
+    
     func pointsForCurrentRound() -> Int {
-        let difference = abs(self.target - sliderValueRounded())
-        let score = 100 - difference
+        let score = 100 - amountOff()
         return score
+    }
+    
+    func alertTitle() -> String {
+        let difference = amountOff()
+        let title: String
+        if difference == 0 {
+            title = "Perfect!"
+        } else if difference < 5 {
+            title = "Almost!"
+        } else if difference < 10 {
+            title = "Not bad!"
+        } else {
+            title = "Not even close!"
+        }
+        return title
     }
 }
 
