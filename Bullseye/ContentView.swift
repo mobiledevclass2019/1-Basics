@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @State var alertIsVisable: Bool = false
     @State var sliderValue: Double = 50.0
+    @State var target: Int = Int.random(in: 1...100)
     
     var body: some View {
         VStack {
@@ -19,7 +20,7 @@ struct ContentView: View {
             // Target row
             HStack {
                 Text("Drag the slider as close as you can to:")
-                Text("100")
+                Text("\(self.target)")
             }
             Spacer()
             // Slider row
