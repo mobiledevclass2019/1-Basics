@@ -19,9 +19,25 @@ struct ContentView: View {
     struct LabelStyle: ViewModifier {
         func body(content: Content) -> some View {
             content
+                .modifier(Shadow())
                 .foregroundColor(Color.white)
-                .shadow(color: .black, radius: 5, x: 2, y: 2)
                 .font(.custom("Arial Rounded MT Bold", size: 18))
+        }
+    }
+    
+    struct ValueStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .modifier(Shadow())
+                .foregroundColor(Color.yellow)
+                .font(.custom("Arial Rounded MT Bold", size: 24))
+        }
+    }
+    
+    struct Shadow: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .shadow(color: .black, radius: 5, x: 2, y: 2)
         }
     }
     
@@ -31,7 +47,7 @@ struct ContentView: View {
             // Target row
             HStack {
                 Text("Drag the slider as close as you can to:").modifier(LabelStyle())
-                Text("\(target)").modifier(LabelStyle())
+                Text("\(target)").modifier(ValueStyle())
             }
             Spacer()
             // Slider row
@@ -70,10 +86,10 @@ struct ContentView: View {
                 }
                 Spacer()
                 Text("Score:").modifier(LabelStyle())
-                Text("\(score)").modifier(LabelStyle())
+                Text("\(score)").modifier(ValueStyle())
                 Spacer()
                 Text("Round:").modifier(LabelStyle())
-                Text("\(round)").modifier(LabelStyle())
+                Text("\(round)").modifier(ValueStyle())
                 Spacer()
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
                     Text("Info")
